@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+    <item android:id="@+id/attend"
+    android:title="Attend"
+        android:icon="@drawable/ic_baseline_touch_app_24px"/>
+
+    <item android:id="@+id/attendance"
+        android:title="Attendance"
+        android:icon="@drawable/ic_baseline_timeline_24px"/>
+
+    <item android:id="@+id/notification"
+        android:title="Notification"
+        android:icon="@drawable/ic_baseline_notifications_24px"/>
+
+    <item android:id="@+id/timetable"
+        android:title="Time Table"
+        android:icon="@drawable/ic_baseline_event_24px"/>
+
+    <item android:id="@+id/logout"
+        android:title="Logout"
+        android:icon="@drawable/ic_baseline_exit_to_app_24px"/>
+
+    </group>
+
+</menu>
