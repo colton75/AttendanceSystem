@@ -17,7 +17,7 @@ public class GetAttendance extends AsyncTask<String,Void,String> {
         ConnectionManager connectionManager=new ConnectionManager();
         HttpURLConnection httpURLConnection;
 
-        String url = "http://192.168.1.4:8080/JSPSample/ReturnAttendance";
+        String url = "http://192.168.1.111:8080/JSPSample/ReturnAttendance";
         String uid=params[0];
         String date=params[1];
         try{

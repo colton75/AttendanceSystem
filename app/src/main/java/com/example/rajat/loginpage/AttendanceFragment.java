@@ -22,7 +22,7 @@ import org.json.JSONObject;
 public class AttendanceFragment extends Fragment {
 
     CalendarView calendarView;
-    String date;
+    String date,fdate;
 
     public AttendanceFragment() {
         // Required empty public constructor
@@ -46,7 +46,7 @@ public class AttendanceFragment extends Fragment {
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 String mnth = "", day = "";
 
-                if (month < 10)
+                if (month < 9)
                     mnth = '0' + String.valueOf(month+1);
                 else
                     mnth = String.valueOf(month+1);
@@ -57,9 +57,11 @@ public class AttendanceFragment extends Fragment {
                     day = String.valueOf(dayOfMonth);
 
                 date = String.valueOf(year) + mnth + day;
+                fdate = day +"/"+ mnth +"/"+String.valueOf(year);
 
                 Bundle bundle = new Bundle();
                 bundle.putString("date", date);
+                bundle.putString("fdate", fdate);
 
                 LectureWiseAttendance lectureWiseAttendance = new LectureWiseAttendance();
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();

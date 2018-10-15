@@ -75,7 +75,7 @@ public class LoginActivity extends AppCompatActivity implements NetworkResponseL
 
     @Override
     public void onSuccess(String response) {
-        String fname,lname,addr,phno,cls,div;
+        String fname,lname,addr,phno,cls,div,uid;
         JSONObject obj = null;
         try {
 
@@ -89,6 +89,7 @@ public class LoginActivity extends AppCompatActivity implements NetworkResponseL
 //                    intent.putExtra("uid",uid);
 //                    context.startActivity(intent);
 
+                uid = obj.getString("uid");
                 fname = obj.getString("fname");
                 lname = obj.getString("lname");
                 addr = obj.getString("addr");
@@ -98,6 +99,7 @@ public class LoginActivity extends AppCompatActivity implements NetworkResponseL
 
                 SharedPreferences sharedPreferences = this.getSharedPreferences("UserInfo",MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("uid",uid);
                 editor.putString("fname",fname);
                 editor.putString("lname",lname);
                 editor.putString("addr",addr);

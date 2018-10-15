@@ -86,13 +86,15 @@ public class TimeTable extends Fragment implements AdapterView.OnItemSelectedLis
 
     public void displayChartTable(JSONArray time, JSONArray subject, JSONArray teacher)
     {
+        mChartLayout.removeAllViews();
         try {
             mTableLayout = new TableLayout(getActivity());
             mTableLayout.setLayoutParams(new TableLayout.LayoutParams(
                     TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
             mTableLayout.setStretchAllColumns(true);
+//            mTableLayout.removeAllViewsInLayout();
 
-            for (int count = 0; count < 7; count++) {
+            for (int count = 0; count < subject.length(); count++) {
                 TableRow row = new TableRow(getActivity());
                 TableRow.LayoutParams rowLP = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT);
 //                rowLP.setMargins(0,0,0,10);
@@ -136,27 +138,27 @@ public class TimeTable extends Fragment implements AdapterView.OnItemSelectedLis
        switch (position)
        {
            case 0:
-                getTimeTable.execute("TE-A","A2","1");
+                getTimeTable.execute("TE","A","A2","1");
 //               Toast.makeText(getActivity(),"You Selected "+String.valueOf(parent.getSelectedItem()),Toast.LENGTH_SHORT).show();
                break;
 
            case 1:
-               getTimeTable.execute("TE-A","A2","2");
+               getTimeTable.execute("TE","A","A2","2");
 //               Toast.makeText(getActivity(),"You Selected "+String.valueOf(parent.getSelectedItem()),Toast.LENGTH_SHORT).show();
                break;
 
            case 2:
-               getTimeTable.execute("TE-A","A2","3");
+               getTimeTable.execute("TE","A","A2","3");
 //               Toast.makeText(getActivity(),"You Selected "+String.valueOf(parent.getSelectedItem()),Toast.LENGTH_SHORT).show();
                break;
 
            case 3:
-               getTimeTable.execute("TE-A","A2","4");
+               getTimeTable.execute("TE","A","A2","4");
 //               Toast.makeText(getActivity(),"You Selected "+String.valueOf(parent.getSelectedItem()),Toast.LENGTH_SHORT).show();
                break;
 
            case 4:
-               getTimeTable.execute("TE-A","A2","5");
+               getTimeTable.execute("TE","A","A2","5");
 //               Toast.makeText(getActivity(),"You Selected "+String.valueOf(parent.getSelectedItem()),Toast.LENGTH_SHORT).show();
                break;
 
@@ -185,7 +187,7 @@ public class TimeTable extends Fragment implements AdapterView.OnItemSelectedLis
 
             //Code for createing table
 
-
+//            mTableLayout.removeAllViews();
             displayChartTable(time,subject,teacher);
 
         }catch(Exception e){e.printStackTrace();}

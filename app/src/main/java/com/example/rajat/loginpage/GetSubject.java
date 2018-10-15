@@ -44,7 +44,7 @@ public class GetSubject extends AsyncTask<MyTaskParams,Void,String> {
     protected String doInBackground(MyTaskParams... myTaskParams) {
         ConnectionManager connectionManager=new ConnectionManager();
         HttpURLConnection httpURLConnection;
-        String url = "http://192.168.1.4:8080/JSPSample/GetSubject1";
+        String url = "http://192.168.1.111:8080/JSPSample/GetSubject1";
         String result="";
         try {
                 httpURLConnection = connectionManager.getConnection(url);

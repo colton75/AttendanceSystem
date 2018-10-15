@@ -28,7 +28,7 @@ import java.util.ArrayList;
 public class GetTimeTable extends AsyncTask<String, Void, String> {
 
     Context context;
-    private String cls,batch,day;
+    private String cls,batch,day,div;
 
     NetworkResponseListener networkResponseListener;
 
@@ -41,18 +41,20 @@ public class GetTimeTable extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... params) {
         ConnectionManager connectionManager=new ConnectionManager();
         HttpURLConnection httpURLConnection;
-        String url = "http://192.168.1.4:8080/JSPSample/ReturnTimeTable";
+        String url = "http://192.168.1.111:8080/JSPSample/ReturnTimeTable";
         String result="";
         try{
 
             httpURLConnection = connectionManager.getConnection(url);
 
             cls = params[0];
-            batch = params[1];
-            day = params[2];
+            div = params[1];
+            batch = params[2];
+            day = params[3];
 
             JSONObject jsonObject = new JSONObject();
             jsonObject.accumulate("cls",cls);
+            jsonObject.accumulate("div",div);
             jsonObject.accumulate("batch",batch);
             jsonObject.accumulate("day",day);
 

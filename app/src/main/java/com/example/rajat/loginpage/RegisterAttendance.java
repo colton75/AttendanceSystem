@@ -23,7 +23,7 @@ public class RegisterAttendance extends AsyncTask<String,Void,String> {
         HttpURLConnection httpURLConnection;
 
         dbname = cls+div+"attendance";
-        String url = "http://192.168.1.4:8080/JSPSample/RegisterAttendace";
+        String url = "http://192.168.1.111:8080/JSPSample/RegisterAttendace";
 
         try{
 

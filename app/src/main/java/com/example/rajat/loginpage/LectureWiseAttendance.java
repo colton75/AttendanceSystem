@@ -1,6 +1,7 @@
 package com.example.rajat.loginpage;
 
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -24,9 +25,11 @@ import org.json.JSONObject;
  */
 public class LectureWiseAttendance extends Fragment implements NetworkResponseListener{
 
-
+    private final String DEFAULT="N/A";
     TableLayout mTableLayout;
     LinearLayout mChartLayout;
+    TextView datetv;
+    String uid;
     public LectureWiseAttendance() {
         // Required empty public constructor
     }
@@ -42,15 +45,22 @@ public class LectureWiseAttendance extends Fragment implements NetworkResponseLi
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        String date;
+        String date,fdate;
         date=getArguments().getString("date");
+        fdate=getArguments().getString("fdate");
+
+        datetv=getActivity().findViewById(R.id.date);
+        datetv.setText(fdate);
 
         mChartLayout = getActivity().findViewById(R.id.table_layout2);
         mChartLayout.removeAllViews();
 
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("UserInfo",getActivity().MODE_PRIVATE);
+        uid = sharedPreferences.getString("uid",DEFAULT);
+
         GetAttendance getAttendance = new GetAttendance();
         getAttendance.setNetworkResponseListener(this);
-        getAttendance.execute("1001",date);
+        getAttendance.execute(uid,date);
     }
 
     @Override
@@ -68,7 +78,7 @@ public class LectureWiseAttendance extends Fragment implements NetworkResponseLi
                     TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
             mTableLayout.setStretchAllColumns(true);
 
-            for (int count = 0; count < 7; count++) {
+            for (int count = 0; count < subject.length(); count++) {
                 TableRow row = new TableRow(getActivity());
                 TableRow.LayoutParams rowLP = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT);
 //                rowLP.setMargins(0,0,0,10);
